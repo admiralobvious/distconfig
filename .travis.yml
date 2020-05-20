@@ -10,13 +10,6 @@ python:
   - "3.7"
   - "3.8"
 
-env:
-    - TOXENV=py35
-    - TOXENV=py36
-    - TOXENV=py37
-    - TOXENV=py38
-    - TOXENV=lint
-
 before_install:
     - sudo apt-get update
     - sudo apt-get install zookeeper
@@ -34,7 +27,7 @@ before_install:
     - ./consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul &
 
 install:
-  - pip install tox
+  - pip install tox-travis
 
 script:
     - DISTCONFIG_RUN_INTEGRATION_TEST=true tox
