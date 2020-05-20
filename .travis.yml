@@ -12,15 +12,15 @@ before_install:
     - sudo apt-get install zookeeper
     - sudo apt-get install zookeeperd
 
-    - wget https://github.com/coreos/etcd/releases/download/v0.4.6/etcd-v0.4.6-linux-amd64.tar.gz
-    - tar xvf etcd-v0.4.6-linux-amd64.tar.gz
-    - pushd etcd-v0.4.6-linux-amd64/
+    - wget https://github.com/coreos/etcd/releases/download/v3.4.8/etcd-v3.4.8-linux-amd64.tar.gz
+    - tar xvf etcd-v3.4.8-linux-amd64.tar.gz
+    - pushd etcd-v3.4.8-linux-amd64/
     - ./etcd &
     - popd
 
     - sudo apt-get install unzip
-    - wget https://dl.bintray.com/mitchellh/consul/0.4.1_linux_amd64.zip
-    - unzip 0.4.1_linux_amd64.zip
+    - wget https://releases.hashicorp.com/consul/1.7.3/consul_1.7.3_linux_amd64.zip
+    - unzip consul_1.7.3_linux_amd64.zip
     - ./consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul &
 
 install:
