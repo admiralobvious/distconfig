@@ -8,3 +8,5 @@
 /logs/
 /lib/
 /_*/
+venv/
+.idea

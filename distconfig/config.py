@@ -3,8 +3,6 @@ import functools
 import re
 import weakref
 
-import six
-
 
 UNDEFINED = object()
 
@@ -21,7 +19,7 @@ def _split_path(path, _regex=re.compile(r'(?<!\\)/')):
         ['', 'a', 'b', 'c']
         >>> _split_path('//')
         ['', '', '']
-        >>> _split_path('a\/b/c')
+        >>> _split_path('a\\/b/c')
         ['a/b', 'c']
 
     """
@@ -49,7 +47,7 @@ class Config(collections.Mapping):
 
     def _invalidate(self, new_data):
         self._data = new_data
-        for path, inner_config in six.iteritems(self.__inner_configs):
+        for path, inner_config in self.__inner_configs.items():
             inner_data = self.get(path, default={})
             inner_config._invalidate(inner_data)
 
@@ -75,7 +73,7 @@ class Config(collections.Mapping):
 
         ``path`` argument can be in the form 'key1/key2/key3' as a shortcut for doing
         ``config['key1']['key2']['key3']``. In case a key have a / in it, we can escape it
-        like so 'key1\/key2/key3' this will be translated to ``config['key1/key2']['key3']``
+        like so 'key1\\/key2/key3' this will be translated to ``config['key1/key2']['key3']``
 
         :param path: path expression e.g. 'key1/key2/key3'
         :param default: default value to return when key is missing, in case it's
@@ -157,19 +155,19 @@ class Config(collections.Mapping):
         """
         return self.get(path, default=default, type_=bool)
 
-    def get_unicode(self, path, default=UNDEFINED):
-        """Get path value as unicode.
+    def get_string(self, path, default=UNDEFINED):
+        """Get path value as string.
 
         :param path: path expression e.g. 'key1.key2.key3'
         :param default: default value to return when key is missing,
-            if supplied ``default`` must be of type unicode, default: UNDEFINED.
+            if supplied ``default`` must be of type ustring, default: UNDEFINED.
 
-        :return: the value of the requested path as a Unicode.
+        :return: the value of the requested path as a String.
 
         :raises TypeError: if path value is not of type ``type_``.
         :raises KeyError: if path doesn't exist and no default was given.
         """
-        return self.get(path, default=default, type_=six.text_type)
+        return self.get(path, default=default, type_=str)
 
     def get_bytes(self, path, default=UNDEFINED):
         """Get path value as bytes.
@@ -178,11 +176,11 @@ class Config(collections.Mapping):
         :param default: default value to return when key is missing,
             if supplied ``default`` must be of type bytes, default: UNDEFINED.
 
-        :return: the value of the requested path as a Unicode.
+        :return: the value of the requested path as Bytes.
 
         :raises TypeError: if path value is not of type ``type_``.
         :raises KeyError: if path doesn't exist and no default was given.
         """
-        return self.get(path, default=default, type_=six.binary_type)
+        return self.get(path, default=default, type_=bytes)
 
 

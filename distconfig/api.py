@@ -1,7 +1,7 @@
 from . import config, utils
 
 
-class Proxy(object):
+class Proxy:
     """Proxy class for differents backend."""
 
     def __init__(self, backend):

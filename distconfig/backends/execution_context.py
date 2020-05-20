@@ -1,11 +1,8 @@
 import abc
 import threading
 
-import six
 
-
-@six.add_metaclass(abc.ABCMeta)
-class ExecutionContext(object):
+class ExecutionContext(metaclass=abc.ABCMeta):
     """Base abstract execution context class."""
 
     @abc.abstractmethod

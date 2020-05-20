@@ -55,17 +55,17 @@ Example using zookeeper as a backend ::
     # config is a read only mapping-like object.
     config = proxy.get_config('/distconfig/service_name/config')
 
-    print config['key']
+    print(config['key'])
 
     # Getting nested values works by supplying key seperated by '/' char.
-    print config['key/inner']
+    print(config['key/inner'])
 
     # You can assert key value type by using typed get function e.g.
     # get_int, get_float, get_unicode, get_bytes ... .
-    print config.get_int('key/inner/int_key')
+    print(config.get_int('key/inner/int_key'))
 
     # Getting a inner config.
-    print config.get_config('key/inner/dict_key')
+    print(config.get_config('key/inner/dict_key'))
 
 
 Development:

@@ -1,9 +1,9 @@
+import http.client
 import os
 import socket
 import unittest
 
 import etcd
-from six.moves import http_client
 
 from distconfig.tests.integration.base import _BackendTestCase
 from distconfig.api import Proxy
@@ -15,7 +15,7 @@ ETCD_ENDPOINT_PORT = int(os.environ.get('ETCD_ENDPOINT_PORT', 4001))
 
 
 def etcd_running():
-    conn = http_client.HTTPConnection(ETCD_ENDPOINT_IP, port=ETCD_ENDPOINT_PORT)
+    conn = http.client.HTTPConnection(ETCD_ENDPOINT_IP, port=ETCD_ENDPOINT_PORT)
     try:
         conn.request('HEAD', '/')
     except (socket.error, socket.gaierror):

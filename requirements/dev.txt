@@ -3,7 +3,7 @@ Sphinx
 tox
 mock
 coverage
-pyflake
+flake8
 kazoo
 python-etcd
 python-consul

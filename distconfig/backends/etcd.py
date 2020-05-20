@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from etcd import EtcdKeyNotFound
 
 from distconfig.backends.base import BaseBackend

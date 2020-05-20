@@ -1,9 +1,9 @@
+import http.client
 import os
 import socket
 import unittest
 
 import consul
-from six.moves import http_client
 
 from distconfig.tests.integration.base import _BackendTestCase
 from distconfig.api import Proxy
@@ -14,7 +14,7 @@ CONSUL_ENDPOINT_PORT = int(os.environ.get('CONSUL_ENDPOINT_PORT', 8500))
 
 
 def consul_running():
-    conn = http_client.HTTPConnection(CONSUL_ENDPOINT_IP, port=CONSUL_ENDPOINT_PORT)
+    conn = http.client.HTTPConnection(CONSUL_ENDPOINT_IP, port=CONSUL_ENDPOINT_PORT)
     try:
         conn.request('HEAD', '/')
     except (socket.error, socket.gaierror):

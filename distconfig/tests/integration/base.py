@@ -4,15 +4,12 @@ import os
 import time
 import unittest
 
-import six
-
 envvar = 'DISTCONFIG_RUN_INTEGRATION_TEST'
 if os.environ.get(envvar) != 'true':
     raise unittest.SkipTest('Skipping integration tests, to enable run: export %s=true' % envvar)
 
 
-@six.add_metaclass(abc.ABCMeta)
-class _BackendTestCase(unittest.TestCase):
+class _BackendTestCase(unittest.TestCase, metaclass=abc.ABCMeta):
 
     def setUp(self):
         super(_BackendTestCase, self).setUp()
@@ -24,11 +21,13 @@ class _BackendTestCase(unittest.TestCase):
             'none': None
         }
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def path(self):
         pass
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def proxy(self):
         pass
 

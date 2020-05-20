@@ -1,16 +1,13 @@
 import abc
+import json
 import logging
 import sys
-
-import six
-import ujson
 
 
 LOGGER = logging.getLogger(__name__)
 
 
-@six.add_metaclass(abc.ABCMeta)
-class BaseBackend(object):
+class BaseBackend(metaclass=abc.ABCMeta):
     """Base abstract backend class.
 
     Backend implementation should inherit and implement ``get_raw`` method.
@@ -19,7 +16,7 @@ class BaseBackend(object):
     :param logger: :class:`logging.Logger`` instance.
     """
 
-    def __init__(self, parser=ujson.loads, logger=LOGGER):
+    def __init__(self, parser=json.loads, logger=LOGGER):
         self.__callbacks = []
         self.__parser = parser
 

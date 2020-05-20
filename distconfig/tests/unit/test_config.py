@@ -1,6 +1,3 @@
-# -*- encoding: utf8 -*-
-import six
-
 import unittest
 
 from distconfig.config import Config
@@ -14,8 +11,8 @@ class ConfigTestCase(unittest.TestCase):
                 'integer': 1,
                 'float': 1.4,
                 'boolean': True,
-                'unicode': u'Straße',
-                'bytes': six.b('bytes')
+                'string': 'Straße',
+                'bytes': b'bytes'
             },
             'outer': 'foobar',
             'esca/ped': 'escaped'
@@ -37,7 +34,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(value, 'foobar')
 
     def test_get_escaped_key(self):
-        value = self.config.get('esca\/ped')
+        value = self.config.get('esca\\/ped')
         self.assertEqual(value, 'escaped')
 
     def test_no_key_exception(self):
@@ -51,7 +48,7 @@ class ConfigTestCase(unittest.TestCase):
         self.assertEqual(sorted(self.config), ['esca/ped', 'inner', 'outer'])
 
     def test_contains_path(self):
-        self.assertTrue('inner/unicode' in self.config)
+        self.assertTrue('inner/string' in self.config)
         self.assertTrue('outer' in self.config)
 
         self.assertTrue('inner/not_there' not in self.config)
@@ -113,28 +110,28 @@ class ConfigTestCase(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.config.get_boolean('inner/not_there', default='wrong type')
 
-    def test_get_unicode(self):
-        self.assertEqual(self.config.get_unicode('inner/unicode'), u'Straße')
+    def test_get_string(self):
+        self.assertEqual(self.config.get_string('inner/string'), 'Straße')
 
-    def test_get_unicode_with_default(self):
-        self.assertEqual(self.config.get_unicode('inner/not_there', default=u''), u'')
+    def test_get_string_with_default(self):
+        self.assertEqual(self.config.get_string('inner/not_there', default=''), '')
 
-    def test_get_unicode_wrong_type(self):
+    def test_get_string_wrong_type(self):
         with self.assertRaises(TypeError):
-            self.config.get_unicode('inner/integer')
+            self.config.get_string('inner/integer')
 
         with self.assertRaises(TypeError):
-            self.config.get_unicode('inner/not_there', default=1)
+            self.config.get_string('inner/not_there', default=1)
 
     def test_get_bytes(self):
-        self.assertEqual(self.config.get_bytes('inner/bytes'), six.b('bytes'))
+        self.assertEqual(self.config.get_bytes('inner/bytes'), b'bytes')
 
     def test_get_bytes_with_default(self):
-        self.assertEqual(self.config.get_bytes('inner/not_there', default=six.b('')), b'')
+        self.assertEqual(self.config.get_bytes('inner/not_there', default=b''), b'')
 
     def test_get_bytes_wrong_type(self):
         with self.assertRaises(TypeError):
-            self.config.get_bytes('inner/unicode')
+            self.config.get_bytes('inner/string')
 
         with self.assertRaises(TypeError):
             self.config.get_bytes('inner/not_there', default=1)
