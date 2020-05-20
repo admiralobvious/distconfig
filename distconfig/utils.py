@@ -5,7 +5,7 @@ def resolve_dotted_name(name):
 
     :param name: dotted name as a String.
     :return: Resolved Python object.
-    :raises ImportError: If can't resolve ``nane``
+    :raises ImportError: If can't resolve ``none``
 
     Examples:
 

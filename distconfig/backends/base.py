@@ -12,7 +12,7 @@ class BaseBackend(metaclass=abc.ABCMeta):
 
     Backend implementation should inherit and implement ``get_raw`` method.
 
-    :param parser: Callable that accept a string and parse it, default: ``ujson.loads``.
+    :param parser: Callable that accept a string and parse it, default: ``json.loads``.
     :param logger: :class:`logging.Logger`` instance.
     """
 

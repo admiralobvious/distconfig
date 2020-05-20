@@ -2,7 +2,7 @@ from . import config, utils
 
 
 class Proxy:
-    """Proxy class for differents backend."""
+    """Proxy class for different backends."""
 
     def __init__(self, backend):
         self._backend = backend
@@ -16,12 +16,12 @@ class Proxy:
     def configure(cls, backend_qualname, **backend_options):
         """Configure backend.
 
-        :param backend_qualname: Backend class qualifed name (dotted-name)
+        :param backend_qualname: Backend class qualified name (dotted-name)
             e.g. ``distconfig.backends.zookeeper.ZooKeeperBackend``.
         :param logger: ``logging.Logger`` instance to use for logging.
         :param parser: Callable that accept the raw config data saved in
             the backend and should return the config data parsed,
-            default: ``ujson.loads``.
+            default: ``json.loads``.
         :param backend_options: Keyword arguments to pass to backend class.
         """
         backend_cls = utils.resolve_dotted_name(backend_qualname)
@@ -31,7 +31,7 @@ class Proxy:
     def get_config(self, path, config_cls=config.Config):
         """Get configuration from path.
 
-        :param path: Location of the configuratin in the backend.
+        :param path: Location of the configuration in the backend.
         :param config_cls: configuration class to return, default: :class:`distconfig.config.Config`.
         :return: ``config_cls`` instance.
 

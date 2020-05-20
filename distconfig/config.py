@@ -30,7 +30,7 @@ class Config(collections.Mapping):
     """Read only mapping-like for holding configuration.
 
     Note: At the opposite of ``ConfigParser.RawConfigParser`` in stdlib, methods
-    like ``get_<type>`` in this class do **not** coerse, instead the use case
+    like ``get_<type>`` in this class do **not** coerce, instead the use case
     is type assertion, i.e. When a user call ``Config.get_int`` on a key where
     the value is a string e.g. '2', the call will fail with a ``TypeError``.
 
