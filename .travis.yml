@@ -4,11 +4,17 @@ sudo: required
 
 dist: bionic
 
-python:
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8"
+matrix:
+  include:
+    - python: 3.5
+      env: TOXENV=py35
+    - python: 3.6
+      env: TOXENV=py36
+    - python: 3.7
+      env: TOXENV=py37
+    - python: 3.8
+      env: TOXENV=py38
+    - env: TOXENV=lint
 
 before_install:
     - sudo apt-get update
@@ -27,7 +33,7 @@ before_install:
     - ./consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul &
 
 install:
-  - pip install tox-travis
+  - pip install tox
 
 script:
     - DISTCONFIG_RUN_INTEGRATION_TEST=true tox
