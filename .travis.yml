@@ -1,5 +1,15 @@
 language: python
 
+sudo: required
+
+dist: bionic
+
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
 env:
     - TOXENV=py35
     - TOXENV=py36
