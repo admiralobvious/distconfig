@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/alexferl/distconfig.svg?branch=master
-  :target: https://travis-ci.org/alexferl/distconfig
+.. image:: https://travis-ci.com/alexferl/distconfig.svg?branch=master
+  :target: https://travis-ci.com/alexferl/distconfig
 
 .. image:: https://readthedocs.org/projects/distconfig/badge/?version=latest
   :target: https://readthedocs.org/projects/distconfig/?badge=latest
