@@ -76,7 +76,7 @@ Development:
 
 Start by installing dependencies ::
 
-    $ pip install -r requirements/dev.txt requirements/base.txt
+    $ pip install -r requirements/dev.txt
 
 To run unit test use tox ::
 
