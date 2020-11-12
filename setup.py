@@ -7,7 +7,7 @@ with open('README.rst') as f:
 
 setup(
     name='distconfig3',
-    version='1.0.0',
+    version='1.0.1',
     url='http://github.com/alexferl/distconfig/',
     packages=find_packages(),
     maintainer='Alexandre Ferland',

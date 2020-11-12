@@ -1,4 +1,4 @@
-import collections
+import collections.abc
 import functools
 import re
 import weakref
@@ -26,7 +26,7 @@ def _split_path(path, _regex=re.compile(r'(?<!\\)/')):
     return list(map(functools.partial(re.sub, r'\\/', '/'), _regex.split(path)))
 
 
-class Config(collections.Mapping):
+class Config(collections.abc.Mapping):
     """Read only mapping-like for holding configuration.
 
     Note: At the opposite of ``ConfigParser.RawConfigParser`` in stdlib, methods

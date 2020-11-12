@@ -1,6 +1,13 @@
 Distconfig3 Changelog
 ====================
 
+Version 1.0.1
+-------------
+
+Released 2020-11-12
+
+* Use collections.abc instead of collections
+
 Version 1.0.0
 -------------
 
