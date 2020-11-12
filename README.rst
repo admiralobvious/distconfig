@@ -6,7 +6,7 @@
   :alt: Documentation Status
 
 distconfig3
-==========
+===========
 
 This is a fork of `distconfig <https://github.com/deliveryhero/distconfig>`_ removing Python 2.7 support as well as six
 and ujson dependencies.
