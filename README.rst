@@ -1,12 +1,15 @@
-.. image:: https://travis-ci.org/deliveryhero/distconfig.svg?branch=master
-  :target: https://travis-ci.org/deliveryhero/distconfig
+.. image:: https://travis-ci.org/alexferl/distconfig.svg?branch=master
+  :target: https://travis-ci.org/alexferl/distconfig
 
 .. image:: https://readthedocs.org/projects/distconfig/badge/?version=latest
   :target: https://readthedocs.org/projects/distconfig/?badge=latest
   :alt: Documentation Status
 
-distconfig
+distconfig3
 ==========
+
+This is a fork of `distconfig <https://github.com/deliveryhero/distconfig>`_ removing Python 2.7 support as well as six
+and ujson dependencies.
 
 Library to manage distributed configuration using either `ZooKeeper <https://zookeeper.apache.org/>`_ or
 `Etcd <https://github.com/coreos/etcd>`_ or `Consul <http://www.consul.io/>`_.
@@ -21,17 +24,17 @@ library goal is to give developers an easy access to configuration stored in the
 Installation:
 -------------
 
-To use **ZooKeeper** as backend you should install ``distconfig`` using ::
+To use **ZooKeeper** as backend you should install ``distconfig3`` using ::
 
-    $ pip install distconfig[zookeeper]
+    $ pip install distconfig3[zookeeper]
 
 with **etcd**::
 
-    $ pip install distconfig[etcd]
+    $ pip install distconfig3[etcd]
 
 with **consul**::
 
-    $ pip install distconfig[consul]
+    $ pip install distconfig3[consul]
 
 Usage:
 ------
